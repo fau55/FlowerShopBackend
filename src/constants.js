@@ -1,1 +1,1 @@
-export const DB_Name = 'FloralFusion'
+export const DB_Name = 'BlossomBazar'
