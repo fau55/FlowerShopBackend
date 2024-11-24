@@ -1,41 +1,37 @@
-import mongoose from 'mongoose';
-import { Schema } from 'mongoose';
+import mongoose from "mongoose";
+import { Schema } from "mongoose";
 
 const cartSchema = new Schema({
-    items: [
-        {
-            productId: {
-                type: String,
-                required: true
-            },
-            quantity: {
-                type: Number,
-                required: true
-            },
-            priceAtPurchase: {
-                type: Number,
-                required: true
-            },
-            priceAfterDiscount: {
-                type: Number,
-                required: true
-            },
-        }
-    ],
-    totalPrice: {
+  userId: { type: String, required: true },
+  items: [
+    {
+      productId: {
+        type: String,
+      },
+      quantity: {
         type: Number,
-        required: true
+      },
+      priceAtPurchase: {
+        type: Number,
+      },
+      priceAfterDiscount: {
+        type: Number,
+      },
     },
-    createdAt: {
-        type: Date,
-        required: true
-    },
-    updatedAt: {
-        type: Date
-    }
+  ],
+  totalPrice: {
+    type: Number,
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    required: true,
+  },
+  updatedAt: {
+    type: Date,
+  },
 });
 
 const Cart = mongoose.model("Cart", cartSchema);
 
 export { Cart };
-
