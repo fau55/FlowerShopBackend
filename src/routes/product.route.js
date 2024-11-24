@@ -3,9 +3,9 @@ import { addProduct, deleteProduct, editProduct, getAllProducts } from '../contr
 
 const router = Router();
 
-router.route('/get-all').get(getAllProducts);
-router.route('/add').post(addProduct);
-router.route('/edit/:id').post(editProduct);
-router.route('/delete/:id').delete(deleteProduct);
+router.route('get-all').get(getAllProducts);
+router.route('add').post(addProduct);
+router.route('edit/:id').post(editProduct);
+router.route('delete/:id').delete(deleteProduct);
 
 export default router;

@@ -3,11 +3,12 @@ import { getAllCarts, addItemsInCart, getCartByCartId, deleteCartItemByItemId, u
 
 const router = Router();
 
-router.route('/get-all').get(getAllCarts);
-router.route('/add-items/:cartId').post(addItemsInCart);
-router.route('/get-cart-by/:cartId').get(getCartByCartId);
-router.route('/delete-cart-item/:itemId').delete(deleteCartItemByItemId);
-router.route('/update-cart/:cartId').post(updateItemById);
-router.route('/delete-cart/:cart_id').delete(deleteCartById);
+router.route('get-cart-by/:cartId').get(getCartByCartId);
+router.route('add-item/:cartId').post(addItemsInCart);
+router.route('get-all').get(getAllCarts);
+router.route('delete-cart-item/:itemId').delete(deleteCartItemByItemId);
+
+router.route('update-item-quantity/:cartId').post(updateItemById);
+router.route('delete-cart/:cart_id').delete(deleteCartById);
 
 export default router;
