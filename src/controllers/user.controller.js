@@ -1,6 +1,6 @@
 import { User } from "../models/user.js";
 import { Cart } from "../models/cart.js";
-const nodemailer = require('nodemailer');
+import nodemailer from 'nodemailer';
 const getAllUsers = async (req, res) => {
   User.find()
     .then((users) => {
@@ -246,46 +246,46 @@ const otpVerification = async (req, res) => {
 
   // Validate input
   if (!emailId || !username || !otp) {
-      return res.status(400).json({
-          error: 'Email, username, and OTP are required fields.'
-      });
+    return res.status(400).json({
+      error: 'Email, username, and OTP are required fields.'
+    });
   }
 
   // Create reusable transporter object using the default SMTP transport
   const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-          user: process.env.EMAIL_USER,  // Store email in environment variable
-          pass: process.env.EMAIL_PASS,  // Store password in environment variable
-      }
+    service: 'gmail',
+    auth: {
+      user: process.env.EMAIL_USER,  // Store email in environment variable
+      pass: process.env.EMAIL_PASS,  // Store password in environment variable
+    }
   });
 
   // Email options
   const mailOptions = {
-      from: '"Blossom Bazar" <farah.hashmi13sk@gmail.com>', // Sender address
-      to: emailId, // Recipient address
-      subject: 'OTP Verification', // Subject line
-      text: `Hello ${username},\nWelcome to our website! We're excited to have you join us.`,
-      html: `<h2>OTP: ${otp}</h2><p>Thank you for registering on our website.</p>`
+    from: '"Blossom Bazar" <farah.hashmi13sk@gmail.com>', // Sender address
+    to: emailId, // Recipient address
+    subject: 'OTP Verification', // Subject line
+    text: `Hello ${username},\nWelcome to our website! We're excited to have you join us.`,
+    html: `<h2>OTP: ${otp}</h2><p>Thank you for registering on our website.</p>`
   };
 
   try {
-      // Send the email
-      const info = await transporter.sendMail(mailOptions);
-      console.log('Email sent: %s', info.messageId);
-      
-      // Respond with success
-      return res.status(200).json({
-          message: 'OTP sent successfully!',
-          info: info.messageId
-      });
+    // Send the email
+    const info = await transporter.sendMail(mailOptions);
+    console.log('Email sent: %s', info.messageId);
+
+    // Respond with success
+    return res.status(200).json({
+      message: 'OTP sent successfully!',
+      info: info.messageId
+    });
   } catch (error) {
-      console.error('Error sending email:', error);
-      
-      // Respond with error
-      return res.status(500).json({
-          error: 'Failed to send OTP email. Please try again later.',
-      });
+    console.error('Error sending email:', error);
+
+    // Respond with error
+    return res.status(500).json({
+      error: 'Failed to send OTP email. Please try again later.',
+    });
   }
 };
 
