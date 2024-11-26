@@ -191,6 +191,12 @@ const deleteCartById = async (req, res) => {
   });
 };
 
+const getCartbyUserId = async (req, res) => {
+  Cart.find({ userId: req.params.userId }).then((cart) => {
+    res.status(400).json({ cartProducts: cart })
+  })
+}
+
 export {
   getAllCarts,
   addItemsInCart,
@@ -198,4 +204,5 @@ export {
   deleteCartItemByItemId,
   updateItemById,
   deleteCartById,
+  getCartbyUserId
 };

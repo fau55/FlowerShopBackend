@@ -1,9 +1,10 @@
 import { Router } from "express";
-import { getAllCarts, addItemsInCart, getCartByCartId, deleteCartItemByItemId, updateItemById, deleteCartById } from '../controllers/cart.controller.js'
+import { getAllCarts, addItemsInCart, getCartByCartId, deleteCartItemByItemId, updateItemById, deleteCartById, getCartbyUserId } from '../controllers/cart.controller.js'
 
 const router = Router();
 
 router.route('/get-cart-by/:cartId').get(getCartByCartId);
+router.route('/get-user-cart/:userId').get(getCartbyUserId);
 router.route('/add-item/:cartId').post(addItemsInCart);
 router.route('/get-all').get(getAllCarts);
 router.route('/delete-cart-item/:itemId').delete(deleteCartItemByItemId);

@@ -78,4 +78,9 @@ const editProduct = async (req, res) => {
     });
 };
 
-export { addProduct, deleteProduct, editProduct, getAllProducts }
+const getProductbyProductId = async (req, res) => {
+  Product.findById(req.params.productId).then((product) => {
+    res.status(400).json({ productDetails: product })
+  })
+}
+export { addProduct, deleteProduct, editProduct, getAllProducts, getProductbyProductId }
