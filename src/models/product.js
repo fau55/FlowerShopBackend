@@ -9,6 +9,6 @@ const productSchema = new Schema({
     createdOn: { type: Date }
 })
 
-const Product = mongoose.model("products", productSchema);
+const Product = mongoose.model("Product", productSchema);
 
 export { Product };
