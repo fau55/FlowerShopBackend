@@ -27,7 +27,7 @@ const addItemsInCart = async (req, res) => {
     }
 
     // Retrieve the current cart
-    const cart = await Cart.findById(req.params.cartId);
+    const cart = await Cart.findOne({userId :req.params.userId});
     if (!cart) {
       return res.status(404).json({
         message: "Cart not found.",
@@ -147,7 +147,7 @@ const deleteCartItemByItemId = async (req, res) => {
 const updateItemById = async (req, res) => {
   try {
     // Find the cart by ID
-    const cart = await Cart.findById(req.params.cartId);
+    const cart = await Cart.findOne({userId : req.params.userId});
     if (!cart) {
       return res.status(404).json({ message: "Cart not found" });
     }
