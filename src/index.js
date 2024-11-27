@@ -1,6 +1,9 @@
 import { app } from "./app.js";
 import 'dotenv/config'
 import connectDB from "./db/index.js";
+app.get('/', (req, res) => {
+    res.send('Hello World!')
+})
 
 connectDB()
     .then(() => {
